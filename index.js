@@ -1,6 +1,7 @@
 var crypto = require('crypto')
-var fs = require('fs').promises
-var zlib = require('zlib').promises
+var fsPromises = require('fs/promises')
+var fs = require('fs') // Add regular fs for sync operations
+var zlib = require('zlib')
 var path = require('path')
 var mime = require('mime-types')
 var compressible = require('compressible')
@@ -68,7 +69,7 @@ module.exports = function staticCache(dir, options, files) {
 
       var s
       try {
-        s = await fs.stat(fullpath)
+        s = await fsPromises.stat(fullpath)
       } catch (err) {
         return await next()
       }
@@ -82,7 +83,7 @@ module.exports = function staticCache(dir, options, files) {
     if (enableGzip) ctx.vary('Accept-Encoding')
 
     if (!file.buffer) {
-      var stats = await fs.stat(file.path)
+      var stats = await fsPromises.stat(file.path)
       if (stats.mtime.getTime() !== file.mtime.getTime()) {
         file.mtime = stats.mtime
         file.md5 = null
