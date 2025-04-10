@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "bluebird": "3",
+    "husky": "^9.1.7",
     "istanbul": "~0.4.1",
     "koa": "2",
     "mocha": "2",
@@ -61,7 +62,8 @@
     "ylru": "1"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "prepare": "husky install"
   },
   "engines": {
     "node": ">= 7.6.0"

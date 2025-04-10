@@ -4,3 +4,9 @@ Thumbs.db
 node_modules
 npm-debug.log
 coverage
+package-lock.json
+yarn-error.log
+yarn-error.log*
+yarn-debug.log*
+lerna-debug.log*
+lerna-debug.log
